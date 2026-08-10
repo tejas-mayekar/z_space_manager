@@ -21,6 +21,6 @@ builder:
           name: ZSPACEMANAGER
           description: Space Manager
           package: ZDAC_HR
-          transport: MD4K914310
+          transport: MD4K915580
         exclude:
           - /test/
