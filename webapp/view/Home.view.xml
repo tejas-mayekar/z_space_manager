@@ -1,0 +1,40 @@
+<mvc:View controllerName="zspacemanager.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <Tree
+            id="PCC_Space"
+            items="{path: '/', parameters: {arrayNames: ['nodes']}}">
+            <headerToolbar>
+                <OverflowToolbar id="_IDGenOverflowToolbar">
+                    <Title id="_IDGenTitle" text="PCC Space" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                </OverflowToolbar>
+            </headerToolbar>
+
+            <CustomTreeItem id="_IDGenCustomTreeItem1">
+                <HBox id="_IDGenHBox" width="100%" wrap="Wrap">
+
+                    <!-- Parent nodes: plain row -->
+                    <HBox id="_IDGenHBox1" visible="{= !!${nodes} }" alignItems="Center">
+                        <!-- <Icon src="{ref}" class="sapUiTinyMarginEnd" /> -->
+                        <Text id="_IDGenText1" text="{text}" />
+                    </HBox>
+
+                    <!-- Leaf / sub-nodes: rendered as Tile -->
+                    <GenericTile id="_IDGenGenericTile"
+                        visible="{= !${nodes} }"
+                        class="sapUiTinyMarginTopBottom"
+                        header="{text}"
+                        frameType="OneByOne"
+                        press=".onNavigateItemPress">
+                        <TileContent id="_IDGenTileContent">
+                            <ImageContent id="_IDGenImageContent" src="{ref}" />
+                        </TileContent>
+                    </GenericTile>
+                </HBox>
+            </CustomTreeItem>
+        </Tree>
+    </Page>
+</mvc:View>
