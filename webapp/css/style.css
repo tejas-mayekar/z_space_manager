@@ -2,7 +2,7 @@
 /* BACKGROUND                                                */
 /* ========================================================= */
 .bgApp {
-	background: url("../Images/Pic1.jpg") no-repeat center center fixed;
+	/* background: url("../Images/Pic1.jpg") no-repeat center center fixed; */
 	background-size: cover;
 	min-height: 100vh;
 	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -16,8 +16,9 @@
 /* HERO HEADER (TEXT + LOGO IN ONE ROW)                       */
 /* ========================================================= */
 .heroHeader {
+	position: relative; /* lets heroTextBox center on the whole header */
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end; /* logo stays pinned right */
 	align-items: center;
 
 	padding: 3rem 2rem;
@@ -25,26 +26,37 @@
 
 	background: linear-gradient(
 		135deg,
-		rgba(88, 24, 124, 0.75),
-		rgba(40, 0, 80, 0.85)
+		/* rgba(88, 24, 124, 0.75), */
+		rgba(241,242,242, 0.75),
+		rgba(241,242,242, 0.85)
 	);
 
 	border-radius: 0 0 24px 24px;
-	color: #ffffff;
+	color: rgba(88, 24, 124, 0.9);
 
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Absolutely centered on the full header, so it stays centered
+   regardless of the logo's width on the right */
 .heroTextBox {
-	max-width: 70%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	max-width: 100%;
+	text-align: center;
+	pointer-events: none; /* clicks pass through to whatever's behind */
 }
 
 .heroTitle {
 	font-size: 2.6rem;
 	font-weight: 700;
 	letter-spacing: 1px;
-	margin-bottom: 0.8rem;
-	color: #ffffff;
+	margin: 0 auto 0.8rem;
+	text-align: center;
+	color: rgba(88, 24, 124, 0.9);
 }
 
 .heroText {
@@ -52,12 +64,17 @@
 	line-height: 1.7;
 	color: #e6dcff;
 	max-width: 850px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .heroLogoBox {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	position: relative; /* sits above the absolutely-positioned title */
+	z-index: 1;
+	pointer-events: auto;
 }
 
 .appLogo {
@@ -259,6 +276,8 @@
 	}
 
 	.heroTextBox {
+		position: static;
+		transform: none;
 		max-width: 100%;
 		margin-bottom: 1.2rem;
 	}

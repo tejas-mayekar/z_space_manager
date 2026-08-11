@@ -12,7 +12,7 @@
                 <HBox id="heroHeader" class="heroHeader" justifyContent="SpaceBetween" alignItems="Center">
                     <!-- LEFT: HERO TEXT -->
                     <VBox id="heroTextBox" class="heroTextBox">
-                        <Title id="heroTitle" text="PCC Space Manager" class="heroTitle"/>
+                        <Title id="heroTitle" text="Payroll Control Center" class="heroTitle"/>
                         <!-- <Text id="heroText" text="Browse and open your PCC spaces below." class="heroText"/> -->
                     </VBox>
                     <!-- RIGHT: LOGO -->
