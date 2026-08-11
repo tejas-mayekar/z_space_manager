@@ -79,63 +79,93 @@
 /* PANEL CONTAINER & CUSTOM PANELS                            */
 /* ========================================================= */
 .panelContainer {
-	max-width: 950px;
+	width: 100%;
+	max-width: 100%;
+	padding: 0 2rem;
 	margin: 0 auto 2rem;
-	padding: 0 1rem;
+	box-sizing: border-box;
 	background: transparent !important;
 }
 
-/* Custom Panel Container styling with glassmorphism card */
+/* Custom Panel Container styling with dark glassmorphism card */
 .customPanel.sapMPanel {
+	width: 100% !important;
 	background: linear-gradient(
 		135deg,
-		rgba(15, 12, 41, 0.65),
-		rgba(48, 43, 99, 0.65),
-		rgba(36, 36, 62, 0.65)
+		rgba(35, 12, 60, 0.75),
+		rgba(20, 5, 40, 0.85)
 	) !important;
-	border: 1px solid rgba(255, 255, 255, 0.15) !important;
+	border: 1px solid rgba(183, 148, 244, 0.25) !important;
 	border-radius: 16px !important;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(128, 90, 213, 0.2) !important;
-	-webkit-backdrop-filter: blur(12px);
-	backdrop-filter: blur(12px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(128, 90, 213, 0.15) !important;
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
 	overflow: hidden;
 	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .customPanel.sapMPanel:hover {
-	border-color: rgba(183, 148, 244, 0.4) !important;
-	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(160, 120, 255, 0.35) !important;
+	border-color: rgba(183, 148, 244, 0.5) !important;
+	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(160, 120, 255, 0.35) !important;
 }
 
-/* Header Toolbar styling inside Panel */
-.panelHeaderToolbar.sapMTB {
+/* Header Toolbar & Header wrapper styling inside Panel */
+.customPanel .sapMPanelHeader,
+.customPanel .sapMPanelHeaderExpandable,
+.customPanel .sapMTBHeader,
+.customPanel .panelHeaderToolbar.sapMTB {
 	background: linear-gradient(
 		90deg,
-		rgba(88, 24, 124, 0.45),
-		rgba(40, 0, 80, 0.35)
+		rgba(88, 24, 124, 0.8),
+		rgba(40, 0, 80, 0.7)
 	) !important;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-	padding: 0.5rem 1rem !important;
-	height: auto !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+	min-height: 48px !important;
+	padding: 0.4rem 0.8rem !important;
 }
 
-.panelHeaderIcon.sapUiIcon {
-	font-size: 1.5rem !important;
+/* Panel expand/collapse button - remove default white box, borders & Fiori pseudo-elements */
+.customPanel .sapMPanelExpandButton,
+.customPanel .sapMPanelExpandButton *,
+.customPanel .sapMPanelExpandButton *::before,
+.customPanel .sapMPanelExpandButton *::after {
+	background: transparent !important;
+	background-color: transparent !important;
+	border: none !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+.customPanel .sapMPanelExpandButton {
+	margin-right: 0.2rem !important;
+}
+
+.customPanel .sapMPanelExpandButton .sapMBtnIcon,
+.customPanel .sapMPanelExpandButton .sapUiIcon {
+	color: #ffffff !important;
+	font-size: 1.3rem !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+	transition: color 0.2s ease !important;
+}
+
+.customPanel .sapMPanelExpandButton:hover .sapMBtnIcon,
+.customPanel .sapMPanelExpandButton:hover .sapUiIcon {
 	color: #b794f4 !important;
 }
 
+.panelHeaderIcon.sapUiIcon {
+	font-size: 1.4rem !important;
+	color: #b794f4 !important;
+	margin-right: 0.4rem;
+}
+
 .panelHeaderTitle.sapMTitle {
-	font-size: 1.25rem !important;
+	font-size: 1.2rem !important;
 	font-weight: 700 !important;
 	color: #ffffff !important;
 	letter-spacing: 0.5px;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Panel expand/collapse button icon styling */
-.customPanel .sapMPanelExpandButton,
-.customPanel .sapUiIcon {
-	color: #e6dcff !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* Panel Content container */
@@ -157,7 +187,7 @@
 	background: rgba(255, 255, 255, 0.08) !important;
 	border: 1px solid rgba(255, 255, 255, 0.15) !important;
 	border-radius: 12px !important;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 	transition: all 0.25s ease-in-out !important;
 	cursor: pointer !important;
 }
@@ -165,12 +195,12 @@
 .leafTile.sapMGT:hover {
 	background: linear-gradient(
 		135deg,
-		rgba(128, 90, 213, 0.35),
-		rgba(72, 40, 140, 0.35)
+		rgba(128, 90, 213, 0.4),
+		rgba(72, 40, 140, 0.4)
 	) !important;
 	border-color: #b794f4 !important;
 	transform: translateY(-4px);
-	box-shadow: 0 8px 24px rgba(160, 120, 255, 0.4) !important;
+	box-shadow: 0 10px 25px rgba(160, 120, 255, 0.4) !important;
 }
 
 /* Force text and icon colors in Generic Tile */

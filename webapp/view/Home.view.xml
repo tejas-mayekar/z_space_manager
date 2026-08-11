@@ -26,7 +26,8 @@
                     <Panel
                         id="panelSection"
                         expandable="true"
-                        expanded="true"
+                        expanded="false"
+                        width="100%"
                         class="customPanel sapUiMediumMarginBottom">
                         <headerToolbar>
                             <OverflowToolbar id="panelHeader" class="panelHeaderToolbar">
