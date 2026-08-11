@@ -109,26 +109,49 @@
 	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(160, 120, 255, 0.35) !important;
 }
 
-/* Header Toolbar & Header wrapper styling inside Panel */
+/* Outermost Header container gets the SINGLE gradient */
+.customPanel .sapMPanelHeadingDiv,
 .customPanel .sapMPanelHeader,
-.customPanel .sapMPanelHeaderExpandable,
-.customPanel .sapMTBHeader,
-.customPanel .panelHeaderToolbar.sapMTB {
+.customPanel .sapMPanelHeaderExpandable {
 	background: linear-gradient(
 		90deg,
-		rgba(88, 24, 124, 0.8),
-		rgba(40, 0, 80, 0.7)
+		rgba(88, 24, 124, 0.85),
+		rgba(40, 0, 80, 0.75)
 	) !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 	min-height: 48px !important;
-	padding: 0.4rem 0.8rem !important;
+	display: flex !important;
+	align-items: center !important;
+	padding: 0.2rem 0.6rem !important;
 }
 
-/* Panel expand/collapse button - remove default white box, borders & Fiori pseudo-elements */
+/* Inner header elements are 100% transparent to prevent double gradient stacking */
+.customPanel .sapMPanelWrappingDivTb,
+.customPanel .sapMTBHeader,
+.customPanel .panelHeaderToolbar.sapMTB,
+.customPanel .panelHeaderToolbar {
+	background: transparent !important;
+	background-color: transparent !important;
+	border: none !important;
+	border-bottom: none !important;
+	box-shadow: none !important;
+	padding-left: 0 !important;
+}
+
+/* Panel expand/collapse button - target button[id*="expandButton"] & Fiori wrappers */
+.customPanel button[id*="expandButton"],
+.customPanel .sapMPanelWrappingDivTb > button,
+.customPanel .sapMPanelHeadingDiv button,
 .customPanel .sapMPanelExpandButton,
-.customPanel .sapMPanelExpandButton *,
-.customPanel .sapMPanelExpandButton *::before,
-.customPanel .sapMPanelExpandButton *::after {
+.customPanel button[id*="expandButton"] *,
+.customPanel button[id*="expandButton"] *::before,
+.customPanel button[id*="expandButton"] *::after,
+.customPanel .sapMPanelWrappingDivTb > button *,
+.customPanel .sapMPanelWrappingDivTb > button *::before,
+.customPanel .sapMPanelWrappingDivTb > button *::after,
+.customPanel .sapMPanelHeadingDiv button *,
+.customPanel .sapMPanelHeadingDiv button *::before,
+.customPanel .sapMPanelHeadingDiv button *::after {
 	background: transparent !important;
 	background-color: transparent !important;
 	border: none !important;
@@ -137,20 +160,25 @@
 	outline: none !important;
 }
 
-.customPanel .sapMPanelExpandButton {
+.customPanel button[id*="expandButton"],
+.customPanel .sapMPanelWrappingDivTb > button,
+.customPanel .sapMPanelHeadingDiv button {
+	margin-left: 0.4rem !important;
 	margin-right: 0.2rem !important;
 }
 
-.customPanel .sapMPanelExpandButton .sapMBtnIcon,
-.customPanel .sapMPanelExpandButton .sapUiIcon {
+.customPanel button[id*="expandButton"] .sapUiIcon,
+.customPanel .sapMPanelWrappingDivTb > button .sapUiIcon,
+.customPanel .sapMPanelHeadingDiv button .sapUiIcon {
 	color: #ffffff !important;
 	font-size: 1.3rem !important;
 	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
 	transition: color 0.2s ease !important;
 }
 
-.customPanel .sapMPanelExpandButton:hover .sapMBtnIcon,
-.customPanel .sapMPanelExpandButton:hover .sapUiIcon {
+.customPanel button[id*="expandButton"]:hover .sapUiIcon,
+.customPanel .sapMPanelWrappingDivTb > button:hover .sapUiIcon,
+.customPanel .sapMPanelHeadingDiv button:hover .sapUiIcon {
 	color: #b794f4 !important;
 }
 
