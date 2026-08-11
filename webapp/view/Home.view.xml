@@ -4,39 +4,53 @@
     xmlns:core="sap.ui.core"
     xmlns:f="sap.f"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <Tree
-            id="PCC_Space"
-            items="{path: '/', parameters: {arrayNames: ['nodes']}}">
-            <headerToolbar>
-                <OverflowToolbar id="_IDGenOverflowToolbar">
-                    <Title id="_IDGenTitle" text="PCC Space" />
-                    <ToolbarSpacer id="_IDGenToolbarSpacer" />
-                </OverflowToolbar>
-            </headerToolbar>
-            <CustomTreeItem id="_IDGenCustomTreeItem1" class="sapUiTinyMarginTopBottom">
-                <VBox id="_IDGenHBox" class="sapUiTinyMargin">
+    <Page id="page" showHeader="false" class="mainPage bgApp">
+        <content>
+            <VBox id="pageContent">
 
-                    <!-- Parent nodes: plain row -->
-                    <HBox id="_IDGenHBox1" visible="{= !!${nodes} }" alignItems="Center">
-                        <core:Icon id="_IDGenIcon" src="{ref}" class="sapUiTinyMarginEnd" />
-                        <Text id="_IDGenText1" text="{text}" />
-                    </HBox>
+                <!-- HERO HEADER (same pattern as Payroll Workbench) -->
+                <HBox id="heroHeader" class="heroHeader" justifyContent="SpaceBetween" alignItems="Center">
+                    <!-- LEFT: HERO TEXT -->
+                    <VBox id="heroTextBox" class="heroTextBox">
+                        <Title id="heroTitle" text="PCC Space Manager" class="heroTitle"/>
+                        <!-- <Text id="heroText" text="Browse and open your PCC spaces below." class="heroText"/> -->
+                    </VBox>
+                    <!-- RIGHT: LOGO -->
+                    <VBox id="heroLogoBox" class="heroLogoBox">
+                        <VBox id="appLogo" class="appLogo"/>
+                    </VBox>
+                </HBox>
 
-                    <!-- Leaf / sub-nodes: rendered as Tile -->
-                    <GenericTile id="_IDGenGenericTile"
-                        visible="{= !${nodes} }"
-                        class="sapUiTinyMarginTopBottom"
-                        header="{text}"
-                        frameType="OneByOne"
-                        press=".onNavigateItemPress">
-                        <TileContent id="_IDGenTileContent">
-                            <ImageContent id="_IDGenImageContent" src="{ref}" />
-                        </TileContent>
-                    </GenericTile>
-                </VBox>
-            </CustomTreeItem>
-      
-        </Tree>
+                <!-- DYNAMIC TREE (unchanged data binding, restyled) -->
+                <Tree
+                    id="PCC_Space"
+                    class="treeContainer"
+                    items="{path: '/', parameters: {arrayNames: ['nodes']}}">
+                    <CustomTreeItem id="_IDGenCustomTreeItem1" class="sapUiTinyMarginTopBottom treeRow">
+                        <VBox id="_IDGenHBox" class="sapUiTinyMargin">
+
+                            <!-- Parent nodes: plain row -->
+                            <HBox id="_IDGenHBox1" visible="{= !!${nodes} }" alignItems="Center" class="parentRow">
+                                <core:Icon id="_IDGenIcon" src="{ref}" class="sapUiTinyMarginEnd parentIcon" />
+                                <Text id="_IDGenText1" text="{text}" class="parentText" />
+                            </HBox>
+
+                            <!-- Leaf / sub-nodes: rendered as Tile -->
+                            <GenericTile id="_IDGenGenericTile"
+                                visible="{= !${nodes} }"
+                                class="sapUiTinyMarginTopBottom leafTile"
+                                header="{text}"
+                                frameType="OneByOne"
+                                press=".onNavigateItemPress">
+                                <TileContent id="_IDGenTileContent">
+                                    <ImageContent id="_IDGenImageContent" src="{ref}" />
+                                </TileContent>
+                            </GenericTile>
+                        </VBox>
+                    </CustomTreeItem>
+                </Tree>
+
+            </VBox>
+        </content>
     </Page>
 </mvc:View>
