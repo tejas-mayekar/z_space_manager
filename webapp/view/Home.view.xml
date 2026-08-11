@@ -21,34 +21,34 @@
                     </VBox>
                 </HBox>
 
-                <!-- DYNAMIC TREE (unchanged data binding, restyled) -->
-                <Tree
-                    id="PCC_Space"
-                    class="treeContainer"
-                    items="{path: '/', parameters: {arrayNames: ['nodes']}}">
-                    <CustomTreeItem id="_IDGenCustomTreeItem1" class="sapUiTinyMarginTopBottom treeRow">
-                        <VBox id="_IDGenHBox" class="sapUiTinyMargin">
-
-                            <!-- Parent nodes: plain row -->
-                            <HBox id="_IDGenHBox1" visible="{= !!${nodes} }" alignItems="Center" class="parentRow">
-                                <core:Icon id="_IDGenIcon" src="{ref}" class="sapUiTinyMarginEnd parentIcon" />
-                                <Text id="_IDGenText1" text="{text}" class="parentText" />
+                <!-- DYNAMIC PANELS (replacing Tree control) -->
+                <VBox id="PCC_Space" class="panelContainer" items="{path: '/'}">
+                    <Panel
+                        id="panelSection"
+                        expandable="true"
+                        expanded="true"
+                        class="customPanel sapUiMediumMarginBottom">
+                        <headerToolbar>
+                            <OverflowToolbar id="panelHeader" class="panelHeaderToolbar">
+                                <core:Icon id="panelHeaderIcon" src="{ref}" class="panelHeaderIcon sapUiTinyMarginEnd" />
+                                <Title id="panelHeaderTitle" text="{text}" level="H3" class="panelHeaderTitle" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <HBox id="tileFlexBox" items="{nodes}" wrap="Wrap" class="tileContainer">
+                                <GenericTile id="leafTile"
+                                    class="sapUiTinyMargin leafTile"
+                                    header="{text}"
+                                    frameType="OneByOne"
+                                    press=".onNavigateItemPress">
+                                    <TileContent id="tileContent">
+                                        <ImageContent id="tileImage" src="{ref}" />
+                                    </TileContent>
+                                </GenericTile>
                             </HBox>
-
-                            <!-- Leaf / sub-nodes: rendered as Tile -->
-                            <GenericTile id="_IDGenGenericTile"
-                                visible="{= !${nodes} }"
-                                class="sapUiTinyMarginTopBottom leafTile"
-                                header="{text}"
-                                frameType="OneByOne"
-                                press=".onNavigateItemPress">
-                                <TileContent id="_IDGenTileContent">
-                                    <ImageContent id="_IDGenImageContent" src="{ref}" />
-                                </TileContent>
-                            </GenericTile>
-                        </VBox>
-                    </CustomTreeItem>
-                </Tree>
+                        </content>
+                    </Panel>
+                </VBox>
 
             </VBox>
         </content>

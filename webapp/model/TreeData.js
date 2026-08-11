@@ -14,7 +14,7 @@ sap.ui.define([], function () {
                             semantic_object: "processManagement"
                         },
                         {
-                            text: "	Off-Cycle Payroll",
+                            text: "Off-Cycle Payroll",
                             ref: "sap-icon://folder",
                             semantic_object: "offCycle"
                         }
@@ -30,7 +30,7 @@ sap.ui.define([], function () {
                             semantic_object: "auditTrail"
                         },
                         {
-                            text: "	Alert Management",
+                            text: "Alert Management",
                             ref: "sap-icon://accept",
                             semantic_object: "alertManagement"
                         },

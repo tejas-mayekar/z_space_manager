@@ -76,100 +76,117 @@
 }
 
 /* ========================================================= */
-/* TREE CONTAINER (replaces .linkContainer for this page)     */
+/* PANEL CONTAINER & CUSTOM PANELS                            */
 /* ========================================================= */
-.treeContainer {
-	max-width: 850px;
+.panelContainer {
+	max-width: 950px;
 	margin: 0 auto 2rem;
 	padding: 0 1rem;
 	background: transparent !important;
 }
 
-.treeContainer.sapMTree {
-	background: transparent !important;
-	border: none !important;
-}
-
-/* The actual row UI5 renders is the <li class="sapMLIB">, not our inner VBox.
-   Give THAT element the glass-card treatment so there is an opaque-ish
-   layer for backdrop-filter to blur, and so every row (parent or leaf)
-   gets a consistent card look like .appLink. */
-.treeContainer .sapMLIB {
+/* Custom Panel Container styling with glassmorphism card */
+.customPanel.sapMPanel {
 	background: linear-gradient(
 		135deg,
-		rgba(15, 12, 41, 0.58),
-		rgba(48, 43, 99, 0.58),
-		rgba(36, 36, 62, 0.58)
+		rgba(15, 12, 41, 0.65),
+		rgba(48, 43, 99, 0.65),
+		rgba(36, 36, 62, 0.65)
 	) !important;
-	border: none !important;
-	border-radius: 14px !important;
-	margin-bottom: 0.6rem !important;
-	box-shadow: 0 8px 22px rgba(128, 90, 213, 0.15) !important;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
-	transition: all 0.3s ease;
+	border: 1px solid rgba(255, 255, 255, 0.15) !important;
+	border-radius: 16px !important;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(128, 90, 213, 0.2) !important;
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
 	overflow: hidden;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.treeContainer .sapMLIB:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 12px 30px rgba(160, 120, 255, 0.35) !important;
+.customPanel.sapMPanel:hover {
+	border-color: rgba(183, 148, 244, 0.4) !important;
+	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(160, 120, 255, 0.35) !important;
 }
 
-/* Kill the default focus/selection outline so it doesn't show as a
-   plain blue rectangle on top of the glass card */
-.treeContainer .sapMLIB:focus::before,
-.treeContainer .sapMLIB.sapMLIBFocusable::before {
-	border-color: transparent !important;
+/* Header Toolbar styling inside Panel */
+.panelHeaderToolbar.sapMTB {
+	background: linear-gradient(
+		90deg,
+		rgba(88, 24, 124, 0.45),
+		rgba(40, 0, 80, 0.35)
+	) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	padding: 0.5rem 1rem !important;
+	height: auto !important;
 }
 
-/* PARENT (NODE) ROW */
-.parentRow {
-	padding: 0.6rem 0.4rem;
-}
-
-.parentIcon,
-.treeContainer .sapMLIB .parentIcon.sapUiIcon {
-	font-size: 1.4rem !important;
+.panelHeaderIcon.sapUiIcon {
+	font-size: 1.5rem !important;
 	color: #b794f4 !important;
-	margin-right: 0.6rem;
 }
 
-.parentText,
-.treeContainer .sapMLIB .parentText.sapMText {
-	font-size: 1.15rem !important;
-	font-weight: 600 !important;
+.panelHeaderTitle.sapMTitle {
+	font-size: 1.25rem !important;
+	font-weight: 700 !important;
 	color: #ffffff !important;
-	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	letter-spacing: 0.5px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* LEAF TILE - sits inside the glass card above, so it stays transparent
-   itself and just inherits the card background (avoids a double box) */
-.leafTile.sapMGT {
+/* Panel expand/collapse button icon styling */
+.customPanel .sapMPanelExpandButton,
+.customPanel .sapUiIcon {
+	color: #e6dcff !important;
+}
+
+/* Panel Content container */
+.customPanel .sapMPanelContent {
 	background: transparent !important;
+	padding: 1.25rem !important;
 	border: none !important;
-	box-shadow: none !important;
+}
+
+/* Tile Flex container */
+.tileContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* Leaf Generic Tile styling */
+.leafTile.sapMGT {
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid rgba(255, 255, 255, 0.15) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+	transition: all 0.25s ease-in-out !important;
+	cursor: pointer !important;
 }
 
 .leafTile.sapMGT:hover {
-	background: rgba(255, 255, 255, 0.04) !important;
+	background: linear-gradient(
+		135deg,
+		rgba(128, 90, 213, 0.35),
+		rgba(72, 40, 140, 0.35)
+	) !important;
+	border-color: #b794f4 !important;
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(160, 120, 255, 0.4) !important;
 }
 
-/* Force every text/icon node inside the tile to white, high-specificity
-   so the SAP Fiori theme's own (often dark-on-light) defaults don't win */
-.treeContainer .leafTile .sapMGTHdr,
-.treeContainer .leafTile .sapMGTHdrTxt,
-.treeContainer .leafTile .sapMTileCntFtrTxt,
-.treeContainer .leafTile .sapMTileCntContent,
-.treeContainer .leafTile span,
-.treeContainer .leafTile div {
+/* Force text and icon colors in Generic Tile */
+.leafTile .sapMGTHdr,
+.leafTile .sapMGTHdrTxt,
+.leafTile .sapMTileCntFtrTxt,
+.leafTile .sapMTileCntContent,
+.leafTile span,
+.leafTile div {
 	color: #ffffff !important;
 	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.treeContainer .leafTile .sapMTileCntIcon,
-.treeContainer .leafTile .sapUiIcon {
-	color: #b794f4 !important;
+.leafTile .sapMTileCntIcon,
+.leafTile .sapUiIcon {
+	color: #d6bcfa !important;
 }
 
 /* ========================================================= */
@@ -200,7 +217,7 @@
 		height: 44px;
 	}
 
-	.treeContainer {
+	.panelContainer {
 		padding: 0 0.5rem;
 	}
 }
