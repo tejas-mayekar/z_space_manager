@@ -35,7 +35,6 @@
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* LEFT SIDE TEXT */
 .heroTextBox {
 	max-width: 70%;
 }
@@ -55,7 +54,6 @@
 	max-width: 850px;
 }
 
-/* RIGHT SIDE LOGO */
 .heroLogoBox {
 	display: flex;
 	justify-content: flex-end;
@@ -63,92 +61,115 @@
 }
 
 .appLogo {
-  height: 56px;
-  width: 160px;
+	height: 56px;
+	width: 160px;
 
-  background-image: url("../Images/Logo1.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+	background-image: url("../Images/Logo1.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 
-  background-color: #ffffff;
-  border-radius: 12px;
+	background-color: #ffffff;
+	border-radius: 12px;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-
 /* ========================================================= */
-/* LINK CONTAINER                                            */
+/* TREE CONTAINER (replaces .linkContainer for this page)     */
 /* ========================================================= */
-.linkContainer {
+.treeContainer {
 	max-width: 850px;
-	margin: 2rem auto;
+	margin: 0 auto 2rem;
 	padding: 0 1rem;
+	background: transparent !important;
 }
 
-/* LINK ROW */
-.appLink {
-	background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-	border-radius: 14px;
-	padding: 1.1rem 1.3rem;
-	margin-bottom: 1rem;
+.treeContainer.sapMTree {
+	background: transparent !important;
+	border: none !important;
+}
 
-	align-items: center;
-	cursor: pointer;
-
-	transition: all 0.3s ease;
+/* The actual row UI5 renders is the <li class="sapMLIB">, not our inner VBox.
+   Give THAT element the glass-card treatment so there is an opaque-ish
+   layer for backdrop-filter to blur, and so every row (parent or leaf)
+   gets a consistent card look like .appLink. */
+.treeContainer .sapMLIB {
+	background: linear-gradient(
+		135deg,
+		rgba(15, 12, 41, 0.58),
+		rgba(48, 43, 99, 0.58),
+		rgba(36, 36, 62, 0.58)
+	) !important;
+	border: none !important;
+	border-radius: 14px !important;
+	margin-bottom: 0.6rem !important;
+	box-shadow: 0 8px 22px rgba(128, 90, 213, 0.15) !important;
+	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
-
-	box-shadow: 0 8px 22px rgba(128, 90, 213, 0.15);
+	transition: all 0.3s ease;
+	overflow: hidden;
 }
 
-.appLink:hover {
-	transform: translateY(-4px);
-	background: rgba(160, 120, 255, 0.15);
-	box-shadow: 0 12px 30px rgba(160, 120, 255, 0.35);
+.treeContainer .sapMLIB:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 12px 30px rgba(160, 120, 255, 0.35) !important;
 }
 
-/* NUMBER */
-.linkNumber {
-	width: 32px;
-	font-size: 1.2rem;
-	font-weight: 700;
-	color: #c4b5fd;
+/* Kill the default focus/selection outline so it doesn't show as a
+   plain blue rectangle on top of the glass card */
+.treeContainer .sapMLIB:focus::before,
+.treeContainer .sapMLIB.sapMLIBFocusable::before {
+	border-color: transparent !important;
 }
 
-/* ICON */
-.linkIcon {
-	font-size: 1.6rem;
-	color: #b794f4;
-	margin-right: 1rem;
+/* PARENT (NODE) ROW */
+.parentRow {
+	padding: 0.6rem 0.4rem;
 }
 
-/* TEXT */
-.linkTextBox {
-	flex: 1;
+.parentIcon,
+.treeContainer .sapMLIB .parentIcon.sapUiIcon {
+	font-size: 1.4rem !important;
+	color: #b794f4 !important;
+	margin-right: 0.6rem;
 }
 
-.linkTitle {
-	font-size: 1.15rem;
-	font-weight: 600;
-	color: #ffffff;
+.parentText,
+.treeContainer .sapMLIB .parentText.sapMText {
+	font-size: 1.15rem !important;
+	font-weight: 600 !important;
+	color: #ffffff !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.linkSubText {
-	font-size: 0.85rem;
-	color: #c7c4ff;
+/* LEAF TILE - sits inside the glass card above, so it stays transparent
+   itself and just inherits the card background (avoids a double box) */
+.leafTile.sapMGT {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
-/* ARROW */
-.linkArrow {
-	font-size: 1.2rem;
-	color: #d8b4fe;
-	transition: transform 0.3s ease;
+.leafTile.sapMGT:hover {
+	background: rgba(255, 255, 255, 0.04) !important;
 }
 
-.appLink:hover .linkArrow {
-	transform: translateX(6px);
+/* Force every text/icon node inside the tile to white, high-specificity
+   so the SAP Fiori theme's own (often dark-on-light) defaults don't win */
+.treeContainer .leafTile .sapMGTHdr,
+.treeContainer .leafTile .sapMGTHdrTxt,
+.treeContainer .leafTile .sapMTileCntFtrTxt,
+.treeContainer .leafTile .sapMTileCntContent,
+.treeContainer .leafTile span,
+.treeContainer .leafTile div {
+	color: #ffffff !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.treeContainer .leafTile .sapMTileCntIcon,
+.treeContainer .leafTile .sapUiIcon {
+	color: #b794f4 !important;
 }
 
 /* ========================================================= */
@@ -177,5 +198,9 @@
 
 	.appLogo {
 		height: 44px;
+	}
+
+	.treeContainer {
+		padding: 0 0.5rem;
 	}
 }
