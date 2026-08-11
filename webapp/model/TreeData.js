@@ -11,12 +11,12 @@ sap.ui.define([], function () {
                         {
                             text: "Process Management",
                             ref: "sap-icon://document-text",
-                            semantic_object: "processManagement"
+                            semantic_object: "hrpy_pcc_proc_3"
                         },
                         {
                             text: "Off-Cycle Payroll",
                             ref: "sap-icon://folder",
-                            semantic_object: "offCycle"
+                            semantic_object: "hrpy_pcc_errm_2"
                         }
                     ]
                 },
@@ -27,17 +27,17 @@ sap.ui.define([], function () {
                         {
                             text: "Audit Trial",
                             ref: "sap-icon://accept",
-                            semantic_object: "auditTrail"
+                            semantic_object: "hrpy_pcc_em_t_2"
                         },
                         {
                             text: "Alert Management",
                             ref: "sap-icon://accept",
-                            semantic_object: "alertManagement"
+                            semantic_object: "hrpy_pcc_al_2"
                         },
                         {
                             text: "Team Alerts",
                             ref: "sap-icon://accept",
-                            semantic_object: "teamAlerts"
+                            semantic_object: "hrpy_pcc_oc_1"
                         }
                     ]
                 },
@@ -48,22 +48,22 @@ sap.ui.define([], function () {
                         {
                             text: "Policy Configuration",
                             ref: "sap-icon://appointment",
-                            semantic_object: "configurePolicy"
+                            semantic_object: "hrpy_pcc_conf_2"
                         },
                         {
                             text: "Process Configuration",
                             ref: "sap-icon://appointment",
-                            semantic_object: "configureProcess"
+                            semantic_object: "hrpy_pcc_conf_1"
                         },
                         {
                             text: "Team Configuration",
                             ref: "sap-icon://appointment",
-                            semantic_object: "teamConfiguration"
+                            semantic_object: "hrpy_pcc_tm_1"
                         },
                         {
                             text: "Team Management",
                             ref: "sap-icon://appointment",
-                            semantic_object: "teamManagement"
+                            semantic_object: "hrpy_pcc_mc_1"
                         }
                     ]
                 }

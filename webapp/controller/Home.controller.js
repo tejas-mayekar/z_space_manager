@@ -24,26 +24,10 @@ sap.ui.define([
         },
 
         navigateToPage: async function (oData) {
-            if (!oData || !oData.semantic_object) {
-                MessageToast.show("No semantic object configured for this item.");
-                return;
-            }
-            try {
-                const Navigation = await sap.ushell.Container.getServiceAsync("Navigation");
-                const sHref = await Navigation.getHref({
-                    target: {
-                        semanticObject: oData.semantic_object,
-                        action: oData.action || "display"
-                    }
-                });
-                if (!sHref) {
-                    MessageToast.show("No target app found for " + oData.semantic_object);
-                    return;
-                }
-                window.location.hash = sHref;
-            } catch (e) {
-                MessageToast.show("Navigation failed: " + e.message);
-            }
-        }
+
+            window.location.href = `https://sapdev-app01.matarat.local:44300/sap/bc/ui5_ui5/sap/${oData.semantic_object}/index.html`;
+
+        },
+
     });
 });
