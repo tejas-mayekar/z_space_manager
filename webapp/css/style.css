@@ -2,7 +2,7 @@
 /* BACKGROUND                                                */
 /* ========================================================= */
 .bgApp {
-	/* background: url("../Images/Pic1.jpg") no-repeat center center fixed; */
+	/* background: url("../Images/bg.png") no-repeat center center fixed; */
 	background-size: cover;
 	min-height: 100vh;
 	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -16,20 +16,20 @@
 /* HERO HEADER (TEXT + LOGO IN ONE ROW)                       */
 /* ========================================================= */
 .heroHeader {
-	position: relative; /* lets heroTextBox center on the whole header */
+	position: relative;
+	/* lets heroTextBox center on the whole header */
 	display: flex;
-	justify-content: flex-end; /* logo stays pinned right */
+	justify-content: flex-end;
+	/* logo stays pinned right */
 	align-items: center;
 
 	padding: 3rem 2rem;
 	margin-bottom: 2rem;
 
-	background: linear-gradient(
-		135deg,
-		/* rgba(88, 24, 124, 0.75), */
-		rgba(241,242,242, 0.75),
-		rgba(241,242,242, 0.85)
-	);
+	background: linear-gradient(135deg,
+			/* rgba(88, 24, 124, 0.75), */
+			rgba(241, 242, 242, 0.75),
+			rgba(88, 24, 124, 0.85));
 
 	border-radius: 0 0 24px 24px;
 	color: rgba(88, 24, 124, 0.9);
@@ -47,7 +47,8 @@
 	transform: translateY(-50%);
 	max-width: 100%;
 	text-align: center;
-	pointer-events: none; /* clicks pass through to whatever's behind */
+	pointer-events: none;
+	/* clicks pass through to whatever's behind */
 }
 
 .heroTitle {
@@ -72,7 +73,8 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	position: relative; /* sits above the absolutely-positioned title */
+	position: relative;
+	/* sits above the absolutely-positioned title */
 	z-index: 1;
 	pointer-events: auto;
 }
@@ -107,11 +109,9 @@
 /* Custom Panel Container styling with dark glassmorphism card */
 .customPanel.sapMPanel {
 	width: 100% !important;
-	background: linear-gradient(
-		135deg,
-		rgba(35, 12, 60, 0.75),
-		rgba(20, 5, 40, 0.85)
-	) !important;
+	background: linear-gradient(135deg,
+			rgba(35, 12, 60, 0.75),
+			rgba(20, 5, 40, 0.85)) !important;
 	border: 1px solid rgba(183, 148, 244, 0.25) !important;
 	border-radius: 16px !important;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(128, 90, 213, 0.15) !important;
@@ -130,11 +130,9 @@
 .customPanel .sapMPanelHeadingDiv,
 .customPanel .sapMPanelHeader,
 .customPanel .sapMPanelHeaderExpandable {
-	background: linear-gradient(
-		90deg,
-		rgba(88, 24, 124, 0.85),
-		rgba(40, 0, 80, 0.75)
-	) !important;
+	background: linear-gradient(90deg,
+			rgba(88, 24, 124, 0.85),
+			rgba(40, 0, 80, 0.75)) !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 	min-height: 48px !important;
 	display: flex !important;
@@ -157,15 +155,15 @@
 
 /* Panel expand/collapse button - target button[id*="expandButton"] & Fiori wrappers */
 .customPanel button[id*="expandButton"],
-.customPanel .sapMPanelWrappingDivTb > button,
+.customPanel .sapMPanelWrappingDivTb>button,
 .customPanel .sapMPanelHeadingDiv button,
 .customPanel .sapMPanelExpandButton,
 .customPanel button[id*="expandButton"] *,
 .customPanel button[id*="expandButton"] *::before,
 .customPanel button[id*="expandButton"] *::after,
-.customPanel .sapMPanelWrappingDivTb > button *,
-.customPanel .sapMPanelWrappingDivTb > button *::before,
-.customPanel .sapMPanelWrappingDivTb > button *::after,
+.customPanel .sapMPanelWrappingDivTb>button *,
+.customPanel .sapMPanelWrappingDivTb>button *::before,
+.customPanel .sapMPanelWrappingDivTb>button *::after,
 .customPanel .sapMPanelHeadingDiv button *,
 .customPanel .sapMPanelHeadingDiv button *::before,
 .customPanel .sapMPanelHeadingDiv button *::after {
@@ -178,14 +176,14 @@
 }
 
 .customPanel button[id*="expandButton"],
-.customPanel .sapMPanelWrappingDivTb > button,
+.customPanel .sapMPanelWrappingDivTb>button,
 .customPanel .sapMPanelHeadingDiv button {
 	margin-left: 0.4rem !important;
 	margin-right: 0.2rem !important;
 }
 
 .customPanel button[id*="expandButton"] .sapUiIcon,
-.customPanel .sapMPanelWrappingDivTb > button .sapUiIcon,
+.customPanel .sapMPanelWrappingDivTb>button .sapUiIcon,
 .customPanel .sapMPanelHeadingDiv button .sapUiIcon {
 	color: #ffffff !important;
 	font-size: 1.3rem !important;
@@ -194,7 +192,7 @@
 }
 
 .customPanel button[id*="expandButton"]:hover .sapUiIcon,
-.customPanel .sapMPanelWrappingDivTb > button:hover .sapUiIcon,
+.customPanel .sapMPanelWrappingDivTb>button:hover .sapUiIcon,
 .customPanel .sapMPanelHeadingDiv button:hover .sapUiIcon {
 	color: #b794f4 !important;
 }
@@ -238,11 +236,9 @@
 }
 
 .leafTile.sapMGT:hover {
-	background: linear-gradient(
-		135deg,
-		rgba(128, 90, 213, 0.4),
-		rgba(72, 40, 140, 0.4)
-	) !important;
+	background: linear-gradient(135deg,
+			rgba(128, 90, 213, 0.4),
+			rgba(72, 40, 140, 0.4)) !important;
 	border-color: #b794f4 !important;
 	transform: translateY(-4px);
 	box-shadow: 0 10px 25px rgba(160, 120, 255, 0.4) !important;

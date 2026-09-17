@@ -21,8 +21,8 @@ sap.ui.define([], function () {
                     ]
                 },
                 {
-                    text: "Payroll Obervation",
-                    ref: "sap-icon://document",
+                    text: "Payroll Validation alerts and audit",
+                    ref: "sap-icon://folder-full",
                     nodes: [
                         {
                             text: "Audit Trial",
@@ -43,7 +43,7 @@ sap.ui.define([], function () {
                 },
                 {
                     text: "Payroll Administration",
-                    ref: "sap-icon://calendar",
+                    ref: "sap-icon://folder-full",
                     nodes: [
                         {
                             text: "Policy Configuration",
